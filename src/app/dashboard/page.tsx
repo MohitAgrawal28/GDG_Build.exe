@@ -262,7 +262,7 @@ export default function Dashboard() {
   };
 
   const handleViewBloodBanks = () => {
-    alert('Showing nearby blood banks...');
+    router.push('/blood-banks');
   };
 
   const handleResetData = () => {

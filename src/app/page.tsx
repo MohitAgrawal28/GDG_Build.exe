@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import TextType from '@/components/TextType';
 import { Bell, Droplet, Heart, Users, LogIn, UserPlus } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,6 +9,14 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import React from "react";
 import SplitText from "@/components/ui/SplitText";
+import { 
+  Navbar, 
+  NavBody, 
+  NavItems, 
+  MobileNav, 
+  MobileNavHeader, 
+  NavbarButton 
+} from "@/components/ui/resizable-navbar";
 
 export default function Home() {
   const router = useRouter();
@@ -16,32 +25,61 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
-      <header className="bg-white/90 backdrop-blur-lg border-b border-red-100 fixed w-full z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
+      {/* Resizable Navbar */}
+      <Navbar>
+        <NavBody>
+          <div className="flex items-center space-x-2 w-full max-w-[200px]">
             <Droplet className="h-8 w-8 text-[#DC2626]" />
             <h1 className="text-2xl font-bold text-gray-900">
               R.A.<span className="text-[#DC2626]">K.T</span>
             </h1>
           </div>
-          <nav className="flex space-x-4">
-            <Link 
-              href="/auth/login"
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-transparent border border-[#DC2626] text-[#DC2626] hover:bg-[#DC2626]/10 transition-colors"
+          
+          {/* Centered Nav Items */}
+          <NavItems 
+            items={[
+              { name: "Home", link: "/" },
+              { name: "Donate", link: "/auth/register" },
+              { name: "Find Blood", link: "/blood-requests" },
+              { name: "About", link: "#" },
+            ]} 
+            className="hidden lg:flex"
+          />
+
+          {/* Right Action Buttons */}
+          <div className="flex items-center justify-end space-x-4 w-full max-w-[200px]">
+            <NavbarButton 
+              href="/auth/login" 
+              variant="secondary"
+              className="text-[#DC2626] font-semibold hover:bg-red-50"
             >
-              <LogIn className="h-5 w-5" />
-              <span>Login</span>
-            </Link>
-            <Link 
-              href="/auth/register"
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-[#DC2626] text-white hover:bg-[#B91C1C] transition-colors"
+              Login
+            </NavbarButton>
+            <NavbarButton 
+              href="/auth/register" 
+              className="bg-[#DC2626] text-white hover:bg-[#B91C1C] shadow-none"
             >
-              <UserPlus className="h-5 w-5" />
-              <span>Sign Up</span>
+              Sign Up
+            </NavbarButton>
+          </div>
+        </NavBody>
+        
+        {/* Mobile Navigation */}
+        <MobileNav className="lg:hidden">
+          <MobileNavHeader>
+            <div className="flex items-center space-x-2">
+              <Droplet className="h-6 w-6 text-[#DC2626]" />
+              <span className="text-xl font-bold text-gray-900">
+                R.A.<span className="text-[#DC2626]">K.T</span>
+              </span>
+            </div>
+            {/* Mobile Toggle Logic would go here - for now simplified */}
+            <Link href="/auth/login" className="text-[#DC2626] font-medium text-sm">
+              Login
             </Link>
-          </nav>
-        </div>
-      </header>
+          </MobileNavHeader>
+        </MobileNav>
+      </Navbar>
       
 
       {/* Hero Section with Video Background */}
@@ -89,9 +127,14 @@ export default function Home() {
             to={{ opacity: 1, y: 0 }}
             textAlign="center"
           />
-          <p className="mt-6 text-xl text-gray-800 max-w-lg mx-auto font-medium">
-            Every drop of blood you donate can save a life. Join our community of heroes today.
-          </p>
+          <TextType
+            as="p"
+            className="mt-6 text-xl text-gray-800 max-w-lg mx-auto font-medium"
+            text="Every drop of blood you donate can save a life. Join our community of heroes today."
+            typingSpeed={50}
+            cursorCharacter="|"
+            loop={false}
+          />
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/auth/register"
