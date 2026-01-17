@@ -1,7 +1,7 @@
 // Using dynamic import for browser environments
 (async () => {
     // Import Firebase modules dynamically
-    const { auth, db, rtdb } = await import('./src/lib/firebase-config-browser.js');
+    const { auth, db, rtdb } = await import('../src/config/firebase/firebase-config-browser.js');
     const { createUserWithEmailAndPassword, updateProfile } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js');
     const { doc, setDoc, collection } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js');
     const { ref, set } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js');

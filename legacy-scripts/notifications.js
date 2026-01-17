@@ -1,4 +1,4 @@
-import { auth, rtdb } from "./src/lib/firebase-config.js";
+import { auth, rtdb } from "../src/config/firebase/firebase-config.js";
 import { ref, onValue, update, remove, query, orderByChild, limitToLast } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 

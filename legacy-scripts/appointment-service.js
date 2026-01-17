@@ -1,6 +1,6 @@
 (async () => {
     // Import Firebase modules dynamically
-    const { db } = await import('./src/lib/firebase-config-browser.js');
+    const { db } = await import('../src/config/firebase/firebase-config-browser.js');
     const { collection, addDoc, getDocs, query, where, doc, updateDoc, deleteDoc, getDoc } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js');
     const notificationService = await import('./notification-service.js');
 

@@ -1,7 +1,7 @@
 // Using dynamic import for browser environments
 (async () => {
     // Import Firebase modules dynamically for browser environment
-    const { auth } = await import('./src/lib/firebase-config-browser.js');
+    const { auth } = await import('../src/config/firebase/firebase-config-browser.js');
     const { signInWithEmailAndPassword } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js');
 
     document.getElementById("loginForm")?.addEventListener("submit", function (event) {

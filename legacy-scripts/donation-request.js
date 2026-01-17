@@ -1,6 +1,6 @@
 (async () => {
     // Import Firebase modules dynamically
-    const { auth, db, rtdb } = await import('./src/lib/firebase-config-browser.js');
+    const { auth, db, rtdb } = await import('../src/config/firebase/firebase-config-browser.js');
     const { collection, addDoc } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js');
     const { onAuthStateChanged } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js');
     const { ref, set, push } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js');

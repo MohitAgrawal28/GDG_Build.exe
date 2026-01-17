@@ -3,7 +3,7 @@
  * Provides a unified API interface using Firebase.
  */
 
-import { auth, db, rtdb } from "./src/lib/firebase-config.js";
+import { auth, db, rtdb } from "../src/config/firebase/firebase-config.js";
 import { collection, addDoc, getDocs, query, where, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import { ref, set, get, push, remove } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
