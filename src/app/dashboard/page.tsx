@@ -972,7 +972,7 @@ const Logo = () => {
         animate={{ opacity: 1 }}
         className="font-medium whitespace-pre text-gray-900"
       >
-        BloodConnect
+        R.A.K.T
       </motion.span>
     </Link>
   );

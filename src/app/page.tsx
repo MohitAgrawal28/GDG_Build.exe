@@ -5,10 +5,9 @@ import { Bell, Droplet, Heart, Users, LogIn, UserPlus } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { LampDemo } from '@/components/ui/lamp';
 import { useAuth } from '@/lib/auth-context';
 import React from "react";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import SplitText from "@/components/ui/SplitText";
 
 export default function Home() {
   const router = useRouter();
@@ -20,7 +19,7 @@ export default function Home() {
       <header className="bg-white/90 backdrop-blur-lg border-b border-red-100 fixed w-full z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <Droplet className="h-8 w-8 text-[#DC2626] animate-pulse" />
+            <Droplet className="h-8 w-8 text-[#DC2626]" />
             <h1 className="text-2xl font-bold text-gray-900">
               R.A.<span className="text-[#DC2626]">K.T</span>
             </h1>
@@ -45,8 +44,70 @@ export default function Home() {
       </header>
       
 
-      {/* Hero Section with Lamp Effect */}
-      <LampDemo />
+      {/* Hero Section with Video Background */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background - centered focus */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center scale-105"
+        >
+          {/* Add your video source here */}
+          <source src="videos/Video_Spelling_Correction_Provided.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Light overlay for text readability */}
+        <div className="absolute inset-0 bg-white/30"></div>
+        
+        {/* Content - Centered */}
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <SplitText
+            text="Give The Gift"
+            className="text-5xl md:text-7xl font-bold font-heading text-white tracking-widest text-stroke-black"
+            tag="h1"
+            delay={80}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 50 }}
+            to={{ opacity: 1, y: 0 }}
+            textAlign="center"
+          />
+          <SplitText
+            text="of Life"
+            className="text-5xl md:text-7xl font-bold font-heading text-white tracking-widest mt-2 text-stroke-black"
+            tag="h1"
+            delay={80}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 50 }}
+            to={{ opacity: 1, y: 0 }}
+            textAlign="center"
+          />
+          <p className="mt-6 text-xl text-gray-800 max-w-lg mx-auto font-medium">
+            Every drop of blood you donate can save a life. Join our community of heroes today.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/auth/register"
+              className="px-8 py-4 rounded-lg bg-[#DC2626] text-white font-semibold hover:bg-[#B91C1C] transition-colors shadow-lg"
+            >
+              Become a Donor
+            </Link>
+            <Link
+              href="/blood-requests"
+              className="px-8 py-4 rounded-lg bg-gray-800 text-white font-semibold hover:bg-gray-900 transition-colors shadow-lg"
+            >
+              Find Blood
+            </Link>
+          </div>
+        </div>
+      </section>
       
       {/* Features Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
