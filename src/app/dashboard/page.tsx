@@ -605,7 +605,9 @@ export default function Dashboard() {
             <div>
               <SidebarLink
                 link={{
-                  label: "John Doe",
+                  label: userData?.firstName && userData?.lastName 
+                    ? `${userData.firstName} ${userData.lastName}`
+                    : user?.email?.split('@')[0] || "User",
                   href: "/profile",
                   icon: (
                     <div className="h-7 w-7 shrink-0 rounded-full bg-[#DC2626]/20 flex items-center justify-center">

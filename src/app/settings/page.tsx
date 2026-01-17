@@ -7,6 +7,7 @@ import { Sidebar, SidebarBody, SidebarLink } from '@/components/ui/sidebar';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/auth-context';
 
 interface UserProfile {
   email: string;
@@ -24,6 +25,7 @@ interface SecuritySettings {
 
 export default function SettingsPage() {
   const router = useRouter();
+  const { user, userData } = useAuth();
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('notifications');
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -304,7 +306,9 @@ export default function SettingsPage() {
             <div>
               <SidebarLink
                 link={{
-                  label: "John Doe",
+                  label: userData?.firstName && userData?.lastName 
+                    ? `${userData.firstName} ${userData.lastName}`
+                    : user?.email?.split('@')[0] || "User",
                   href: "/profile",
                   icon: (
                     <div className="h-7 w-7 shrink-0 rounded-full bg-[#DC2626]/30 flex items-center justify-center">
